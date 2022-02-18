@@ -30,13 +30,15 @@ public class Program {
 			//percorrendo e imprimindo
 			while(rs.next()) {
 				System.out.println(rs.getInt("id") + ", " + rs.getString("name"));
-			}
-			
+			}	
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
+		finally {
+			DB.closeResultSet(rs);
+			DB.closeStatement(st);
+			DB.closeConnection();
+		}	
 	}
 }
